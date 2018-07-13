@@ -83,7 +83,7 @@ export default class Container extends React.Component {
       this.setState(() => ({
         newImages: images,
         animation: true
-      }))
+      }));
     }
   };
 
@@ -95,7 +95,6 @@ export default class Container extends React.Component {
       images: newImages.concat(images)
     });
   };
-
 
   doneDrop = () => {
     this.setState({
