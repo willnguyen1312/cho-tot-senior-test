@@ -31,16 +31,16 @@ export default class Container extends React.Component {
       images: [],
       newImages: [
         // ============= TEST NEW IMAGES =================
-        {
-          id: -999,
-          src:
-            "https://images.unsplash.com/photo-1530894649581-58df9294379f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=2a7fc04d47f9adc067e817801a32fd4f"
-        },
-        {
-          id: -1000,
-          src:
-            "https://images.unsplash.com/photo-1531074619134-42c90edc718b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=57825536998d5ba68f9384cfa1b0a068"
-        }
+        // {
+        //   id: -999,
+        //   src:
+        //     "https://images.unsplash.com/photo-1530894649581-58df9294379f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=2a7fc04d47f9adc067e817801a32fd4f"
+        // },
+        // {
+        //   id: -1000,
+        //   src:
+        //     "https://images.unsplash.com/photo-1531074619134-42c90edc718b?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop&ixid=eyJhcHBfaWQiOjF9&s=57825536998d5ba68f9384cfa1b0a068"
+        // }
       ],
       didDrop: false
     };
