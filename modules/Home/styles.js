@@ -10,7 +10,7 @@ export const Img = pure(styled.img`
 
 const fallOffSky = keyframes`
   from {
-    transform: translateY(-300px)
+    transform: translateY(-2000px)
   }
 
   to {
