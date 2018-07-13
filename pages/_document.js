@@ -16,9 +16,7 @@ export default class MyDocument extends Document {
       // eslint-disable-next-line
       <html>
         <Head>
-          <title>
-My page
-          </title>
+          <title>My solution page</title>
           {this.props.styleTags}
         </Head>
         <body>

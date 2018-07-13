@@ -3,6 +3,7 @@ import { pure } from "recompose";
 
 export const Img = pure(styled.img`
   width: 300px;
+  margin: 5px;
   height: 200px;
   cursor: pointer;
 `);
