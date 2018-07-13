@@ -13,6 +13,7 @@
 2.  cd cho-tot-senior-test
 3.  yarn install
 4.  yarn dev
+5.  Go to <http://localhost:3000/>
 
 ## TODO:
 
