@@ -46,12 +46,6 @@ export default class Container extends React.Component {
     };
   }
 
-  doneDrop = () => {
-    this.setState({
-      didDrop: true
-    });
-  };
-
   componentDidMount() {
     this.subscribe();
   }
@@ -89,7 +83,7 @@ export default class Container extends React.Component {
       this.setState(() => ({
         newImages: images,
         animation: true
-      }));
+      }))
     }
   };
 
@@ -102,11 +96,11 @@ export default class Container extends React.Component {
     });
   };
 
-  subscribe = () => {
-    if (this.state.subscribe && !this.state.subscribed) {
-      this.props.socket.on("images", this.handleNewImages);
-      this.setState({ subscribed: true });
-    }
+
+  doneDrop = () => {
+    this.setState({
+      didDrop: true
+    });
   };
 
   render() {

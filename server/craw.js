@@ -1,34 +1,39 @@
 const puppeteer = require("puppeteer");
 
 async function run(uri) {
-  const browser = await puppeteer.launch();
+  try {
 
-  const page = await browser.newPage();
-  await page.goto(uri, { waitUntil: "load" });
+    const browser = await puppeteer.launch();
 
-  const IMG_SELECTOR = ".listing_thumbs_image img";
+    const page = await browser.newPage();
+    await page.goto(uri, { waitUntil: "load" });
 
-  const retrievedData = await page.evaluate(async sel => {
-    window.scrollBy(0, document.body.scrollHeight);
+    const IMG_SELECTOR = ".listing_thumbs_image img";
 
-    let imgSrcList;
-    await new Promise(resolve => {
-      setTimeout(() => {
-        const eles = document.querySelectorAll(sel);
-        imgSrcList = Array.from(eles)
-          .slice(0, -1)
-          .map(img => img.src);
+    const retrievedData = await page.evaluate(async sel => {
+      window.scrollBy(0, document.body.scrollHeight);
 
-        resolve();
-      }, 7000);
-    });
+      let imgSrcList;
+      await new Promise(resolve => {
+        setTimeout(() => {
+          const eles = document.querySelectorAll(sel);
+          imgSrcList = Array.from(eles)
+            .slice(0, -1)
+            .map(img => img.src);
 
-    return imgSrcList;
-  }, IMG_SELECTOR);
+          resolve();
+        }, 7000);
+      });
 
-  await browser.close();
+      return imgSrcList;
+    }, IMG_SELECTOR);
 
-  return retrievedData;
+    await browser.close();
+
+    return retrievedData;
+  }
+  catch (error) {
+  }
 }
 
 module.exports = run;

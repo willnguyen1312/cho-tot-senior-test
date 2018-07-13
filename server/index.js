@@ -2,6 +2,8 @@ const app = require("express")();
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const next = require("next");
+const uuidv1 = require("uuid/v1");
+require('events').EventEmitter.prototype._maxListeners = 100;
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -19,18 +21,12 @@ let latest = {
   src: "dummy"
 };
 
-let index = 0;
-
 async function* asyncRange() {
   while (true) {
-    // eslint-disable-next-line
     const data = await run(url);
-    if (latest.src !== data[0].src) {
-      // eslint-disable-next-line
-      latest = data[0];
-      // eslint-disable-next-line
+    if (data && latest.src !== data[0]) {
+      latest.src = data[0];
       const news = data
-        // eslint-disable-next-line
         .filter((src, index) => {
           if (!images[index]) {
             return true;
@@ -40,10 +36,8 @@ async function* asyncRange() {
           }
           return true;
         })
-        // eslint-disable-next-line
         .map(src => ({
-          // eslint-disable-next-line
-          id: index++,
+          id: uuidv1(),
           src
         }));
       images = news.concat(images);
@@ -63,7 +57,6 @@ io.on("connection", socket => {
     socket.broadcast.emit("images", response);
   });
   (async () => {
-    // eslint-disable-next-line
     for await (const news of asyncRange()) {
       const response = {
         images,
@@ -71,7 +64,6 @@ io.on("connection", socket => {
       };
       socket.broadcast.emit("images", response);
     }
-    // eslint-disable-next-line
   })().catch(e => console.error(e));
 });
 
