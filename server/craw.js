@@ -22,7 +22,7 @@ async function run(uri) {
             .map(img => img.src);
 
           resolve();
-        }, 7000);
+        }, 60000);
       });
 
       return imgSrcList;
