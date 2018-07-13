@@ -2,7 +2,6 @@ const puppeteer = require("puppeteer");
 
 async function run(uri) {
   try {
-
     const browser = await puppeteer.launch();
 
     const page = await browser.newPage();
@@ -22,7 +21,7 @@ async function run(uri) {
             .map(img => img.src);
 
           resolve();
-        }, 60000);
+        }, 7000);
       });
 
       return imgSrcList;
@@ -31,9 +30,7 @@ async function run(uri) {
     await browser.close();
 
     return retrievedData;
-  }
-  catch (error) {
-  }
+  } catch (error) {}
 }
 
 module.exports = run;
